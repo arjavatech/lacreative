@@ -15,6 +15,7 @@
       height: auto;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      border-radius: 3%;
     }
 
     #icon-image-container {
@@ -66,7 +67,7 @@
   </style>
 </head>
 
-<body>
+<body style=" background-image: radial-gradient(circle at center, #1883a7,#2C5364);">
   <div class="container text-center py-5">
     <!-- Main Image -->
     <div class="row justify-content-center">
@@ -81,7 +82,10 @@
         <img id="icon-image" src="images/emailicon.png" alt="Email Icon">
       </a>
       <img onclick="openVideo()" id="icon-image" src="images/ShowReelIcon.png" alt="Show Reel Icon">
+      <button onclick="prevButton()"> Prev </button>
+      <button onclick="nxtButton()"> Next </button>
     </div>
+
 
     <!-- Video Modal -->
     <div id="videoo">
@@ -93,10 +97,28 @@
   </div>
 
   <script>
+      let index = 0;
+      let interval, image, images;
+      
     // Open video modal
     function openVideo() {
       document.getElementById("videoo").style.display = "block";
     }
+
+    
+  //next button
+  function nxtButton() {
+    index = (index + 1) % images.length;
+    image.src = images[index];
+    image.style.opacity = 1;
+  }
+
+    //prev button
+    function prevButton() {
+    index = (index - 1) % images.length;
+    image.src = images[index];
+    image.style.opacity = 1;
+  }
 
     // Close video modal
     function closeVideo() {
@@ -107,8 +129,8 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-  const image = document.getElementById("movingImage");
-  const images = [
+    image = document.getElementById("movingImage");
+    images = [
     "images/0A-black-white-Landing-page.png",
     "images/0B-Color-Landing-page-Blur.png",
     "images/0B-Color-Landing-page-Sharp.png",
@@ -124,9 +146,6 @@
     "images/5D-Trending.png",
     "images/6A-Empower.png"
   ];
-
-  let index = 0;
-  let interval;
 
   function changeImage() {
     image.style.opacity = 0; // Fade out
