@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="images/logo-fav.png" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>  
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        /* Responsive Image Styles */
+          
+        #icon-image-container {
+          display: flex;
+          justify-content: end;
+          gap: 15px;
+          margin-top: 20px;
+        }
+    
+        .imgSet{
+          border-radius: 3%;
+          /* transition: opacity 1s ease-in-out; */
+        }
+
+        .carousel-item{
+          /* transition: opacity 1s ease-in-out; */
+        }
+
+        #icon-image {
+          width: 50px;
+          height: 50px;
+          cursor: pointer;
+        }
+    
+        #videoo {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 1050;
+          background: rgba(0, 0, 0, 0.8);
+          padding: 20px;
+          border-radius: 10px;
+          text-align: center;
+        }
+    
+        #videoo video {
+          max-width: 100%;
+          height: auto;
+        }
+    
+        .close {
+          position: absolute;
+          top: 5px;
+          right: 3px;
+          background-color: red;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 50%;
+          font-size: 16px;
+          cursor: pointer;
+        }
+        #movingImage:hover {
+      animation-play-state: paused;
+    }
+      </style>
+</head>
+
+<body style=" background-image: radial-gradient(circle at center, #1883a7,#2C5364);">
+    <div id="carouselExampleControls" class="container pt-5 my-5 carousel slide" data-ride="carousel">
+        <center>
+        <div class="carousel-inner col-md-9">
+          <div class="carousel-item active">
+            <img class="imgSet d-block w-100" src="images/0A-black-white-Landing-page.png" alt="1 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/0B-Color-Landing-page-Blur.png" alt="2 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/0B-Color-Landing-page-Sharp.png" alt="3 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/1A-Hello.png" alt="4 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/1B-Hello.png" alt="5 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/1C-Hello.png" alt="6 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/2A-Imagine.png" alt="7 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/3A-Shots.png" alt="8 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/3B-Shots.png" alt="9 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/3C-Shots.png" alt="10 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/3D-Shots.png" alt="11 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/3E-Shots.png" alt="12 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/3F-Shots.png" alt="13 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/4A-Buzz.png" alt="14 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/4B-Buzz.png" alt="15 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/4C-Buzz.png" alt="16 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/5A-Trending.png" alt="17 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/5C-Trending.png" alt="18 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/5D-Trending.png" alt="19 slide">
+          </div>
+          <div class="carousel-item">
+            <img class=" imgSet d-block w-100" src="images/6A-Empower.png" alt="20 slide">
+          </div>
+        </div>
+        </center>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+        <!-- Icon Links -->
+        <div>
+          <div class="col-md-10" id="icon-image-container">
+
+            <img id="icon-image" src="images/home.png" alt="Email Icon">
+            <a target="_blank" href="mailto:caddrafterdesigns@gmail.com">
+              <img id="icon-image" src="images/emailicon.png" alt="Email Icon">
+            </a>
+            <img onclick="openVideo()" id="icon-image" src="images/ShowReelIcon.png" alt="Show Reel Icon">
+          </div>
+        </div>
+    
+  
+      <!-- Video Modal -->
+      <div id="videoo">
+        <button class="close" onclick="closeVideo()">X</button>
+        <video id="source" controls>
+          <source src="images/LAdemo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  
+    <script>
+      // Open video modal
+      function openVideo() {
+        document.getElementById("videoo").style.display = "block";
+      }
+  
+      // Close video modal
+      function closeVideo() {
+        const videoElement = document.getElementById("source");
+        document.getElementById("videoo").style.display = "none";
+        videoElement.pause();
+        videoElement.currentTime = 0;
+      }
+    </script>
+</body>
+</html>
