@@ -15,7 +15,6 @@
       height: auto;
       opacity: 0;
       transition: opacity 1s ease-in-out;
-      border-radius: 3%;
     }
 
     #icon-image-container {
@@ -78,6 +77,9 @@
 
     <!-- Icon Links -->
     <div id="icon-image-container">
+      <a target="_blank" href="#">
+        <img id="icon-image" src="images/home.png" alt="Email Icon">
+      </a>
       <a target="_blank" href="https://mail.google.com/mail/u/0/?ogbl#inbox">
         <img id="icon-image" src="images/emailicon.png" alt="Email Icon">
       </a>
@@ -108,6 +110,7 @@
     
   //next button
   function nxtButton() {
+    // index = index > images.length ? index 
     index = (index + 1) % images.length;
     image.src = images[index];
     image.style.opacity = 1;
@@ -115,7 +118,7 @@
 
     //prev button
     function prevButton() {
-    index = (index - 1) % images.length;
+    index =  index > 0 ? (index - 1): index = 0;
     image.src = images[index];
     image.style.opacity = 1;
   }
