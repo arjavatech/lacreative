@@ -86,6 +86,7 @@
       <img onclick="openVideo()" id="icon-image" src="images/ShowReelIcon.png" alt="Show Reel Icon">
       <button onclick="prevButton()"> Prev </button>
       <button onclick="nxtButton()"> Next </button>
+   
     </div>
 
 
@@ -153,7 +154,12 @@
   function changeImage() {
     image.style.opacity = 0; // Fade out
     setTimeout(() => {
-      image.src = images[index];
+      
+      if (index == 0){
+        
+      } else {
+        image.src = images[index];
+      }
       index = (index + 1) % images.length;
       image.style.opacity = 1; // Fade in
     }, 1000);
