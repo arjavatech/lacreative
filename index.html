@@ -9,7 +9,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   <style>
-    /* Responsive Image Styles */
     #movingImage {
       max-width: 100%;
       height: auto;
@@ -60,9 +59,53 @@
       font-size: 16px;
       cursor: pointer;
     }
+
     #movingImage:hover {
-  animation-play-state: paused;
-}
+      animation-play-state: paused;
+    }
+
+    .image-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    #home-links {
+      display: none;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+    }
+
+    #home-links a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      /* background-color: rgba(0, 0, 0, 0.7); */
+      padding: 8px 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .cinema{
+      color: #d7b996 !important;
+      text-decoration:underline !important;
+    }
+
+    .design{
+      color: #939597 !important;
+      text-decoration:underline !important;
+    }
+
+    /* #home-links a:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      text-decoration: none;
+    } */
+
+  
   </style>
 </head>
 
@@ -71,24 +114,31 @@
     <!-- Main Image -->
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <img id="movingImage" src="" alt="Moving Image" class="img-fluid">
+        <div class="image-container">
+          <img id="movingImage" src="" alt="Moving Image" class="img-fluid">
+          <div id="home-links">
+            <a href="#" class="cinema">Cinema</a>
+            <a href="#" class="design">Design</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Icon Links -->
     <div id="icon-image-container">
-      <a target="_blank" href="#">
-        <img id="icon-image" src="images/home.png" alt="Email Icon">
-      </a>
+      <div>
+        <a href="#" onclick="goHome()">
+          <img id="icon-image" src="images/home.png" alt="Home Icon">
+        </a>
+      </div>
+
       <a target="_blank" href="https://mail.google.com/mail/u/0/?ogbl#inbox">
         <img id="icon-image" src="images/emailicon.png" alt="Email Icon">
       </a>
       <img onclick="openVideo()" id="icon-image" src="images/ShowReelIcon.png" alt="Show Reel Icon">
       <button onclick="prevButton()"> Prev </button>
       <button onclick="nxtButton()"> Next </button>
-   
     </div>
-
 
     <!-- Video Modal -->
     <div id="videoo">
@@ -100,29 +150,13 @@
   </div>
 
   <script>
-      let index = 0;
-      let interval, image, images;
-      
+    let index = 0;
+    let interval, image, images;
+
     // Open video modal
     function openVideo() {
       document.getElementById("videoo").style.display = "block";
     }
-
-    
-  //next button
-  function nxtButton() {
-    // index = index > images.length ? index 
-    index = (index + 1) % images.length;
-    image.src = images[index];
-    image.style.opacity = 1;
-  }
-
-    //prev button
-    function prevButton() {
-    index =  index > 0 ? (index - 1): index = 0;
-    image.src = images[index];
-    image.style.opacity = 1;
-  }
 
     // Close video modal
     function closeVideo() {
@@ -132,56 +166,94 @@
       videoElement.currentTime = 0;
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-    image = document.getElementById("movingImage");
-    images = [
-    "images/0A-black-white-Landing-page.png",
-    "images/0B-Color-Landing-page-Blur.png",
-    "images/0B-Color-Landing-page-Sharp.png",
-    "images/1A-Hello.png",
-    "images/1B-Hello.png",
-    "images/1C-Hello.png",
-    "images/2A-Imagine.png",
-    "images/4A-Buzz.png",
-    "images/4B-Buzz.png",
-    "images/4C-Buzz.png",
-    "images/5A-Trending.png",
-    "images/5C-Trending.png",
-    "images/5D-Trending.png",
-    "images/6A-Empower.png"
-  ];
+    // Change image function
+    function changeImage() {
+      image.style.opacity = 0; // Fade out
+      setTimeout(() => {
+        image.src = images[index];
 
-  function changeImage() {
-    image.style.opacity = 0; // Fade out
-    setTimeout(() => {
-      
-      if (index == 0){
-        image.src = images[index];
-      } else {
-        image.src = images[index];
-      }
+        if (index === 0) {
+          document.getElementById("home-links").style.display = "block";
+        } else {
+          document.getElementById("home-links").style.display = "none";
+        }
+
+        index = (index + 1) % images.length;
+        image.style.opacity = 1; // Fade in
+      }, 1000);
+    }
+
+    // Start the image transition
+    function startImageTransition() {
+      changeImage();
+      interval = setInterval(changeImage, 5000); 
+    }
+
+    // Stop the image transition
+    function stopImageTransition() {
+      clearInterval(interval);
+    }
+
+    // Next button
+    function nxtButton() {
       index = (index + 1) % images.length;
-      image.style.opacity = 1; // Fade in
-    }, 1000);
-  }
+      image.src = images[index];
+      image.style.opacity = 1;
 
-  // Start the image transition
-  function startImageTransition() {
-    changeImage(); 
-    interval = setInterval(changeImage, 5000); // Change the image every 5 seconds
-  }
+      if (index === 0) {
+        document.getElementById("home-links").style.display = "block";
+      } else {
+        document.getElementById("home-links").style.display = "none";
+      }
+    }
 
-  // Stop the image transition
-  function stopImageTransition() {
-    clearInterval(interval);
-  }
+    // Previous button
+    function prevButton() {
+      index = index > 0 ? (index - 1) : 0;
+      image.src = images[index];
+      image.style.opacity = 1;
 
-  image.addEventListener("mouseenter", stopImageTransition); // Stop on hover
-  image.addEventListener("mouseleave", startImageTransition); // Resume on hover out
+      if (index === 0) {
+        document.getElementById("home-links").style.display = "block";
+      } else {
+        document.getElementById("home-links").style.display = "none";
+      }
+    }
 
-  startImageTransition();
-});
+    // Home function
+    function goHome() {
+      stopImageTransition();
+      index = 0;
+      image.src = images[index];
+      image.style.opacity = 1;
+      document.getElementById("home-links").style.display = "block";
+      startImageTransition();
+    }
 
+    document.addEventListener("DOMContentLoaded", function () {
+      image = document.getElementById("movingImage");
+      images = [
+        "images/0A-black-white-Landing-page.png",
+        "images/0B-Color-Landing-page-Blur.png",
+        "images/0B-Color-Landing-page-Sharp.png",
+        "images/1A-Hello.png",
+        "images/1B-Hello.png",
+        "images/1C-Hello.png",
+        "images/2A-Imagine.png",
+        "images/4A-Buzz.png",
+        "images/4B-Buzz.png",
+        "images/4C-Buzz.png",
+        "images/5A-Trending.png",
+        "images/5C-Trending.png",
+        "images/5D-Trending.png",
+        "images/6A-Empower.png"
+      ];
+
+      image.addEventListener("mouseenter", stopImageTransition); // Stop on hover
+      image.addEventListener("mouseleave", startImageTransition); // Resume on hover out
+
+      startImageTransition();
+    });
   </script>
 </body>
 
