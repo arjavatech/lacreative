@@ -145,7 +145,7 @@
         <!-- Main Image -->
         <img id="movingImage" src="" alt="Moving Image" class="img-fluid">
         <div id="home-links">
-          <a href="#" class="cinema"  style="font-family: 'Times New Roman', Times, serif;"> Cinema</a>
+          <a href="#" class="cinema"  style="font-family: 'Times New Roman', Times, serif;" onclick="nxtButton()"> Cinema</a>
           <a href="#" class="design" style="font-family: 'Times New Roman', Times, serif;"> Design</a>
         </div>
         <!-- Left Arrow -->
@@ -233,7 +233,7 @@
     // Start the image transition
     function startImageTransition() {
       changeImage();
-      interval = setInterval(changeImage, 5000); 
+      //interval = setInterval(changeImage, 5000); 
     }
 
     // Stop the image transition
@@ -243,19 +243,24 @@
 
     // Next button
     function nxtButton() {
+      image.style.opacity = 0;
+      setTimeout(() => {
       index = (index + 1) % images.length;
       image.src = images[index];
-      image.style.opacity = 1;
+      image.style.opacity = 1; // Fade in
 
       if (index === 0) {
         document.getElementById("home-links").style.display = "block";
       } else {
         document.getElementById("home-links").style.display = "none";
       }
+    }, 1000);
     }
 
     // Previous button
     function prevButton() {
+      image.style.opacity = 0;
+      setTimeout(() => {
       index = index > 0 ? (index - 1) : 0;
       image.src = images[index];
       image.style.opacity = 1;
@@ -265,6 +270,7 @@
       } else {
         document.getElementById("home-links").style.display = "none";
       }
+    }, 1000);
     }
 
     // Home function
@@ -297,7 +303,7 @@
       ];
 
       image.addEventListener("mouseenter", stopImageTransition); // Stop on hover
-      image.addEventListener("mouseleave", startImageTransition); // Resume on hover out
+      //image.addEventListener("mouseleave", startImageTransition); // Resume on hover out
 
       startImageTransition();
     });
