@@ -14,8 +14,7 @@
     #movingImage {
       display: block;
       margin: 0 auto;
-      max-width: 100%;
-      
+      max-width: 100%;      
       height: auto;
       opacity: 0;
       transition: opacity 1s ease-in-out;
@@ -23,7 +22,7 @@
 
     #icon-image-container {
       display: flex;
-      justify-content: end;
+      justify-content: center;
       gap: 15px;
       margin-top: 20px;
     }
@@ -86,7 +85,6 @@
       display: block;
       color: #fff;
       text-decoration: none;
-      /* background-color: rgba(0, 0, 0, 0.7); */
       padding: 8px 15px;
       margin-bottom: 10px;
       border-radius: 5px;
@@ -97,11 +95,13 @@
     .cinema{
       color: #d7b996 !important;
       text-decoration:underline !important;
+      padding-left: 180% !important;
     }
 
     .design{
       color: #939597 !important;
       text-decoration:underline !important;
+      padding-left: 180% !important;
     }
 
     /* #home-links a:hover {
@@ -111,52 +111,29 @@
     } */
 
         /* Common arrow button style */
-        .slider-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      .slider-arrow {
+      transform: translateY(-20%);
       background: transparent;
       font-size: 36px;
       font-weight: 900;
-      color: #000;
+      color: #fff;
       cursor: pointer;
-      padding: 10px 15px;
-      z-index: 10;
       border-radius: 50%;
       border: none;
     }
-
-    .left-arrow {
-      left: -10%;
-    }
-
-    .right-arrow {
-      right: -10%;
-    }  
   </style>
 </head>
 
 <body>
-  <div class="container text-center py-5">
+  <div class="text-center py-5" style="background-color: #000;">
     <!-- Main Image -->
-
     <div class="row justify-content-center m-0 p-0">
-      <div class="col-md-8 m-0 p-0 position-relative text-center">
-        <!-- Main Image -->
+      <div class="col-md-12 m-0 p-0 position-relative text-center">
         <img id="movingImage" src="" alt="Moving Image" class="img-fluid">
         <div id="home-links">
-          <a href="#" class="cinema"  style="font-family: 'Times New Roman', Times, serif;" onclick="nxtButton()"> Cinema</a>
-          <a href="#" class="design" style="font-family: 'Times New Roman', Times, serif;"> Design</a>
+          <a href="#" class="cinema"  style="font-family: 'Times New Roman', Times, serif;" onclick="nxtButton()"> CINEMA</a>
+          <a href="#" class="design" style="font-family: 'Times New Roman', Times, serif;"> DESIGN</a>
         </div>
-        <!-- Left Arrow -->
-        <button onclick="prevButton()" class="slider-arrow left-arrow">
-          <i class="fa fa-angle-left"></i>
-        </button>
-
-        <!-- Right Arrow -->
-        <button onclick="nxtButton()" class="slider-arrow right-arrow">
-          <i class="fa fa-angle-right"></i>
-        </button>
       </div>
     </div>
     <!-- <div class="row justify-content-center">
@@ -172,19 +149,31 @@
     </div> -->
 
     <!-- Icon Links -->
-    <div id="icon-image-container">
-      <div>
-        <a href="#" onclick="goHome()">
-          <img id="icon-image" src="images/home.png" alt="Home Icon">
-        </a>
-      </div>
 
-      <a target="_blank" href="https://mail.google.com/mail/u/0/?ogbl#inbox">
-        <img id="icon-image" src="images/emailicon.png" alt="Email Icon">
+    <div id="icon-image-container">
+      <!-- Left Arrow -->
+      <button onclick="prevButton()" class="slider-arrow left-arrow">
+        <i class="fa fa-angle-left"></i>
+      </button>
+
+      <!-- Home button -->
+   
+      <a href="#" onclick="goHome()">
+        <i class="fa fa-home" style="font-size:32px; color:white;"></i>
       </a>
-      <img onclick="openVideo()" id="icon-image" src="images/ShowReelIcon.png" alt="Show Reel Icon">
-      <!-- <button onclick="prevButton()"> Prev </button>
-      <button onclick="nxtButton()"> Next </button> -->
+   
+
+      <!-- Email button -->
+      <a target="_blank" href="https://mail.google.com/mail/u/0/?ogbl#inbox">
+        <i class="fa fa-envelope" style="font-size:32px; color:white;"></i>
+      </a>
+
+      <a><i class="fa fa-film" style="font-size:32px; color:white; cursor: pointer;" onclick="openVideo()" ></i> </a>
+
+      <!-- Right Arrow -->
+      <button onclick="nxtButton()" class="slider-arrow right-arrow">
+        <i class="fa fa-angle-right"></i>
+      </button>
     </div>
 
     <!-- Video Modal -->
