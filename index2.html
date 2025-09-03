@@ -64,6 +64,9 @@
       cursor: pointer;
     }
 
+    .links {
+      color: #000;
+    }
     #movingImage:hover {
       animation-play-state: paused;
     }
@@ -116,7 +119,7 @@
       background: transparent;
       font-size: 36px;
       font-weight: 900;
-      color: #fff;
+      color: #000;
       cursor: pointer;
       border-radius: 50%;
       border: none;
@@ -125,7 +128,7 @@
 </head>
 
 <body>
-  <div class="text-center py-5" style="background-color: #000;">
+  <div class="text-center py-5" style="background-color: #fff;">
     <!-- Main Image -->
     <div class="row justify-content-center m-0 p-0">
       <div class="col-md-12 m-0 p-0 position-relative text-center">
@@ -149,26 +152,24 @@
     </div> -->
 
     <!-- Icon Links -->
-
     <div id="icon-image-container">
       <!-- Left Arrow -->
       <button onclick="prevButton()" class="slider-arrow left-arrow">
         <i class="fa fa-angle-left"></i>
       </button>
 
+      <!-- reel button -->
+      <a><i class="fa fa-film links" style="font-size:30px; cursor: pointer;" onclick="openVideo()" ></i> </a>
+
       <!-- Home button -->
-   
       <a href="#" onclick="goHome()">
-        <i class="fa fa-home" style="font-size:32px; color:white;"></i>
+        <i class="fa fa-home links" style="font-size:36px;"></i>
       </a>
    
-
       <!-- Email button -->
       <a target="_blank" href="https://mail.google.com/mail/u/0/?ogbl#inbox">
-        <i class="fa fa-envelope" style="font-size:32px; color:white;"></i>
+        <i class="fa fa-envelope links" style="font-size:32px;"></i>
       </a>
-
-      <a><i class="fa fa-film" style="font-size:32px; color:white; cursor: pointer;" onclick="openVideo()" ></i> </a>
 
       <!-- Right Arrow -->
       <button onclick="nxtButton()" class="slider-arrow right-arrow">
