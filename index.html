@@ -24,7 +24,6 @@
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin-top: 20px;
     }
 
     #icon-image {
@@ -123,12 +122,16 @@
       cursor: pointer;
       border-radius: 50%;
       border: none;
+      line-height: 0;
     }
+
+
+
   </style>
 </head>
 
 <body>
-  <div class="text-center py-5" style="background-color: #fff;">
+  <div class="text-center" style="background-color: #fff;">
     <!-- Main Image -->
     <div class="row justify-content-center m-0 p-0">
       <div class="col-md-12 m-0 p-0 position-relative text-center">
@@ -159,16 +162,16 @@
       </button>
 
       <!-- reel button -->
-      <a><i class="fa fa-film links" style="font-size:30px; cursor: pointer;" onclick="openVideo()" ></i> </a>
+      <a><i class="fa fa-film links" style="font-size:24px; cursor: pointer;" onclick="openVideo()" ></i> </a>
 
       <!-- Home button -->
       <a href="#" onclick="goHome()">
-        <i class="fa fa-home links" style="font-size:36px;"></i>
+        <i class="fa fa-home links" style="font-size:30px;"></i>
       </a>
    
       <!-- Email button -->
       <a target="_blank" href="https://mail.google.com/mail/u/0/?ogbl#inbox">
-        <i class="fa fa-envelope links" style="font-size:32px;"></i>
+        <i class="fa fa-envelope links" style="font-size:26px;"></i>
       </a>
 
       <!-- Right Arrow -->
@@ -277,19 +280,18 @@
       image = document.getElementById("movingImage");
       images = [
         "images/0A-black-white-Landing-page.png",
-        "images/0B-Color-Landing-page-Blur.png",
         "images/0B-Color-Landing-page-Sharp.png",
         "images/1A-Hello.png",
         "images/1B-Hello.png",
         "images/1C-Hello.png",
         "images/2A-Imagine.png",
-        "images/4A-Buzz.png",
-        "images/4B-Buzz.png",
-        "images/4C-Buzz.png",
         "images/5A-Trending.png",
         "images/5C-Trending.png",
         "images/5D-Trending.png",
-        "images/6A-Empower.png"
+        "images/6A-Empower.png",
+        "images/4A-Buzz.png",
+        "images/4B-Buzz.png",
+        "images/4C-Buzz.png"
       ];
 
       image.addEventListener("mouseenter", stopImageTransition); // Stop on hover
