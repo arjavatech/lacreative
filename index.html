@@ -5,19 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/logo-fav.png" type="image/png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="module" src="https://cdn.skypack.dev/kampos@0.5.1"></script>
 
   <style>
-    #movingImage {
-      display: block;
+    #kampos-target {
       margin: 0 auto;
-      max-width: 100%;      
+      max-width: 100%;
       height: auto;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
     }
 
     #icon-image-container {
@@ -62,18 +65,12 @@
       font-size: 16px;
       cursor: pointer;
     }
-
+    
     .links {
       color: #fb8334;
     }
-    #movingImage:hover {
-      animation-play-state: paused;
-    }
 
-    .image-container {
-      position: relative;
-      display: inline-block;
-    }
+
 
     /* Common arrow button style */
     .slider-arrow {
@@ -81,7 +78,7 @@
       background: transparent;
       font-size: 36px;
       font-weight: 900;
-      color: #ddfbcd;
+      color: #fb8334;
       cursor: pointer;
       border-radius: 50%;
       border: none;
@@ -107,71 +104,23 @@
       transition: background-color 0.3s ease;
     }
 
-    .cinema{
+    .cinema {
       color: #d7b996 !important;
-      text-decoration:underline !important;
+      text-decoration: underline !important;
       padding-left: 180% !important;
     }
 
-    .design{
+    .design {
       color: #939597 !important;
-      text-decoration:underline !important;
+      text-decoration: underline !important;
       padding-left: 180% !important;
     }
 
-    @media (max-width: 600px) {
-      .cinema{
-        padding-left: 10% !important;
-      }
-
-      .design{
-        padding-left: 10% !important;
-      }
-
-      #home-links a {
-        padding: 0;
-        margin-bottom: 0px;
-      }
-    }
-    
     @media (max-width: 768px) {
-      .cinema{
+      .cinema, .design {
         padding-left: 10% !important;
-      }
-        
-      .design{
-        padding-left: 10% !important;
-      }
-
-      #home-links a {
-        padding: 0;
-        margin-bottom: 0px;
       }
     }
-
-    @media (max-width: 1024px) {
-        .cinema{
-        padding-left: 10% !important;
-      }
-
-      .design{
-        padding-left: 10% !important;
-      }
-
-      #home-links a {
-        padding: 0;
-        margin-bottom: 0px;
-      }
-    }
-
-    @media (max-width: 1920px) {      
-      #movingImage {
-        flex: 0 0 83.333333%; 
-        max-width: 80%;
-        
-      }
-    }
-
   </style>
 </head>
 
@@ -180,9 +129,11 @@
     <!-- Main Image -->
     <div class="row justify-content-center m-0 p-0">
       <div class="col-md-12 m-0 p-0 position-relative text-center">
-        <img id="movingImage" src="" alt="Moving Image" class="img-fluid">
+          <canvas id="kampos-target"></canvas>
+
         <div id="home-links">
-          <a href="#" class="cinema"  style="font-family: 'Times New Roman', Times, serif;" onclick="nxtButton()"> CINEMA</a>
+          <a href="#" class="cinema" style="font-family: 'Times New Roman', Times, serif;" onclick="nxtButton()">
+            CINEMA</a>
           <a href="#" class="design" style="font-family: 'Times New Roman', Times, serif;"> DESIGN</a>
         </div>
       </div>
@@ -207,13 +158,13 @@
       </button>
 
       <!-- reel button -->
-      <a><i class="fa fa-film links" style="font-size:24px; cursor: pointer;" onclick="openVideo()" ></i> </a>
+      <a><i class="fa fa-film links" style="font-size:24px; cursor: pointer;" onclick="openVideo()"></i> </a>
 
       <!-- Home button -->
       <a href="#" onclick="goHome()">
         <i class="fa fa-home links" style="font-size:30px;"></i>
       </a>
-   
+
       <!-- Email button -->
       <a target="_blank" href="https://mail.google.com/mail/u/0/?ogbl#inbox">
         <i class="fa fa-envelope links" style="font-size:26px;"></i>
@@ -234,17 +185,101 @@
     </div>
   </div>
 
-  <script>
+  <script type="module">
+    import * as kampos from "https://cdn.skypack.dev/kampos@0.5.1";
+
     let index = 0;
     let interval, image, images;
+    let kamposInstance, dissolveEffect, turbulenceEffect, mapTarget;
+    let currentImage, nextImage;
+    let isTransitioning = false;
+
+    function loadImage(src) {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => resolve(img);
+        img.src = src;
+      });
+    }
+
+    function initKampos() {
+      const WIDTH = 854;
+      const HEIGHT = 480;
+      const CELL_FACTOR = 4;
+      const AMPLITUDE = CELL_FACTOR / WIDTH;
+
+      turbulenceEffect = kampos.effects.turbulence({ noise: kampos.noise.perlinNoise });
+      turbulenceEffect.frequency = { x: AMPLITUDE, y: AMPLITUDE };
+      turbulenceEffect.octaves = 8;
+      turbulenceEffect.isFractal = true;
+
+      mapTarget = document.createElement('canvas');
+      mapTarget.width = WIDTH;
+      mapTarget.height = HEIGHT;
+
+      const dissolveMap = new kampos.Kampos({ target: mapTarget, effects: [turbulenceEffect], noSource: true });
+      dissolveMap.draw();
+
+      dissolveEffect = kampos.transitions.dissolve();
+      dissolveEffect.map = mapTarget;
+      dissolveEffect.high = 0.3;
+
+      const target = document.querySelector('#kampos-target');
+      kamposInstance = new kampos.Kampos({ target, effects: [dissolveEffect] });
+    }
+
+    async function transitionToImage(newIndex) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      try {
+        nextImage = await loadImage(images[newIndex]);
+
+        if (!currentImage) {
+          currentImage = await loadImage(images[index]);
+          kamposInstance.setSource({ media: currentImage, width: 854, height: 480 });
+          dissolveEffect.from = currentImage;  // ✅ set initial "from"
+        }
+
+        dissolveEffect.to = nextImage;
+        dissolveEffect.textures[1].update = true;
+
+        let progress = 0;
+        const animate = (time) => {
+          progress += 0.02;
+          turbulenceEffect.time = time * 2;
+          dissolveEffect.progress = progress;
+          kamposInstance.draw();
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            currentImage = nextImage;
+            
+            // Update Kampos source to the new image
+            kamposInstance.setSource({ media: currentImage, width: 854, height: 480 });
+            
+            dissolveEffect.progress = 0;
+            index = newIndex;
+            isTransitioning = false;
+            updateHomeLinks();
+          }
+        };
+        requestAnimationFrame(animate);
+      } catch (error) {
+        isTransitioning = false;
+      }
+    }
+
 
     // Open video modal
-    function openVideo() {
+    window.openVideo = function () {
       document.getElementById("videoo").style.display = "block";
     }
 
     // Close video modal
-    function closeVideo() {
+    window.closeVideo = function () {
       const videoElement = document.getElementById("source");
       document.getElementById("videoo").style.display = "none";
       videoElement.pause();
@@ -252,21 +287,18 @@
     }
 
     // Change image function
+
+    function updateHomeLinks() {
+      if (index === 0) {
+        document.getElementById("home-links").style.display = "block";
+      } else {
+        document.getElementById("home-links").style.display = "none";
+      }
+    }
+
     function changeImage() {
-      image.style.opacity = 0; // Fade out
-      image.style.transition =  "opacity 1s ease-in-out";
-      setTimeout(() => {
-        image.src = images[index];
-
-        if (index === 0) {
-          document.getElementById("home-links").style.display = "block";
-        } else {
-          document.getElementById("home-links").style.display = "none";
-        }
-
-        index = (index + 1) % images.length;
-        image.style.opacity = 1; // Fade in
-      }, 1000);
+      const newIndex = (index + 1) % images.length;
+      transitionToImage(newIndex);
     }
 
     // Start the image transition
@@ -280,49 +312,23 @@
       clearInterval(interval);
     }
 
-    // Next button
-    function nxtButton() {
-      image.style.opacity = 0;
-      setTimeout(() => {
-      index = (index + 1) % images.length;
-      image.src = images[index];
-      image.style.opacity = 1; // Fade in
-
-      if (index === 0) {
-        document.getElementById("home-links").style.display = "block";
-      } else {
-        document.getElementById("home-links").style.display = "none";
-      }
-    }, 1000);
+    window.nxtButton = function () {
+      const newIndex = (index + 1) % images.length;
+      transitionToImage(newIndex);
     }
 
-    // Previous button
-    function prevButton() {
-      image.style.opacity = 0;
-      setTimeout(() => {
-      index = index > 0 ? (index - 1) : 0;
-      image.src = images[index];
-      image.style.opacity = 1;
-
-      if (index === 0) {
-        document.getElementById("home-links").style.display = "block";
-      } else {
-        document.getElementById("home-links").style.display = "none";
-      }
-    }, 1000);
+    window.prevButton = function () {
+      const newIndex = (index - 1 + images.length) % images.length;
+      transitionToImage(newIndex);
     }
 
-    // Home function
-    function goHome() {
+    window.goHome = function () {
       stopImageTransition();
       index = 0;
-      image.src = images[index];
-      image.style.opacity = 1;
-      document.getElementById("home-links").style.display = "block";
-      startImageTransition();
+      transitionToImage(0);
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", async function () {
       image = document.getElementById("movingImage");
       images = [
         "images/0A-black-white-Landing-page.png",
@@ -340,11 +346,28 @@
         "images/4C-Buzz.png"
       ];
 
-      image.addEventListener("mouseenter", stopImageTransition); // Stop on hover
-      //image.addEventListener("mouseleave", startImageTransition); // Resume on hover out
+      initKampos();
 
-      startImageTransition();
+      try {
+        currentImage = await loadImage(images[0]);
+
+        // 🔹 Set both the source and dissolve starting point
+        kamposInstance.setSource({ media: currentImage, width: 854, height: 480 });
+        dissolveEffect.from = currentImage;
+        dissolveEffect.to = currentImage;    // ensure something is drawn
+
+        dissolveEffect.progress = 1; // force full render
+        kamposInstance.draw();
+
+        const canvas = document.querySelector('#kampos-target');
+        canvas.style.display = 'block';
+
+        updateHomeLinks();
+      } catch (error) {
+        console.error('Failed to load first image:', error);
+      }
     });
+
   </script>
 </body>
 
